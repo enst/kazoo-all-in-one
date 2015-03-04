@@ -6,7 +6,7 @@ RUN yum install -y kazoo-bigcouch-R15B kazoo-R15B kazoo-kamailio kazoo-freeswitc
                     kazoo-configs kazoo-prompts kazoo-librabbitmq \
                     monster-ui-accounts monster-ui-core monster-ui-numbers \
                     monster-ui-pbxs monster-ui-voip monster-ui-webhooks \
-                    rsyslog
+                    rsyslog httpd
 
 WORKDIR /opt/kazoo_install
 

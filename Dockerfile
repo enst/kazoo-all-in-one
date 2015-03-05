@@ -10,4 +10,4 @@ RUN yum install -y kazoo-bigcouch-R15B kazoo-R15B kazoo-kamailio kazoo-freeswitc
 
 WORKDIR /opt/kazoo_install
 
-CMD ./setup_packages -a -i bigcouch -i rabbitmq -i haproxy -i kazoo -i freeswitch -i kazoo-ui -i kamailio
+#CMD ./setup_packages -a -i bigcouch -i rabbitmq -i haproxy -i kazoo -i freeswitch -i kazoo-ui -i kamailio

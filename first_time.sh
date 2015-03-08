@@ -12,7 +12,7 @@ sed -i '/children/s/25/10/' /etc/kazoo/kamailio/default.cfg
 
 confirm 'Would you like to configure Kazoo now? [y|n]' && [[ $answer =~ ^[y|Y] ]] 
 echo "generrate erlang cookie" && generate_erlang_cookie 
-rm -rf /opt/kazoo/.erlang.cookie && cp /etc/kazoo/erlang.cookie /opt/kazoo/.erlang.cookie 
+rm -rf /opt/kazoo/.erlang.cookie && ln -s /etc/kazoo/erlang.cookie /opt/kazoo/.erlang.cookie 
 UUID=`cat /etc/kazoo/erlang.cookie` 
 sed -i '/cookie/s/= .*/= '"${UUID}"'/' /etc/kazoo/config.ini 
 

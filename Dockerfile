@@ -10,14 +10,15 @@ RUN yum install -y kazoo-bigcouch-R15B kazoo-R15B kazoo-kamailio kazoo-freeswitc
 
 WORKDIR /opt/kazoo_install
 
-CMD . ./setup_common \
+CMD yum reinstall -y kazoo-configs \
+                    && . ./setup_common \
                     && chown kazoo:daemon /opt/kazoo/log -R \
                     && sed -i '/port/s/15984/5984/' /etc/kazoo/config.ini \
                     && sed -i '/port/s/15986/5986/' /etc/kazoo/config.ini \
-                    && confirm "Do you want to configure Kazoo now? [y|n]" && [[ $answer =~ ^[y|Y] ]] \
-                    && yum reinstall -y kazoo-configs \
+                    && confirm "Would you like to configure Kazoo now? [y|n]" && [[ $answer =~ ^[y|Y] ]] \
                     && echo "generrate erlang cookie" && generate_erlang_cookie \
                     && cp /etc/kazoo/erlang.cookie /opt/kazoo/.erlang.cookie \
                     && UUID=`cat /etc/kazoo/erlang.cookie` \
-                    && sed -i '/cookie/s/change_me/'"${UUID}"'/' /etc/kazoo/config.ini
+                    && sed -i '/cookie/s/change_me/'"${UUID}"'/' /etc/kazoo/config.ini \
+                    && exec /bin/bash
                     

@@ -14,6 +14,7 @@ confirm 'Would you like to configure Kazoo now? [y|n]'
 [[ $answer =~ ^[y|Y] ]] || exit 0
 echo "generrate erlang cookie" && generate_erlang_cookie 
 rm -rf /opt/kazoo/.erlang.cookie && ln -s /etc/kazoo/erlang.cookie /opt/kazoo/.erlang.cookie 
+rm -rf /var/lib/rabbitmq/.erlang.cookie && ln -s /etc/kazoo/erlang.cookie /var/lib/rabbitmq/.erlang.cookie
 UUID=`cat /etc/kazoo/erlang.cookie` 
 sed -i '/cookie/s/= .*/= '"${UUID}"'/' /etc/kazoo/config.ini 
 

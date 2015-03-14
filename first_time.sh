@@ -2,9 +2,7 @@
 
 source ./setup_common 
 
-yum reinstall -y kazoo-configs
-
-chown kazoo:daemon /opt/kazoo/log -R 
+#yum reinstall -y kazoo-configs
 
 sed -i '/port/s/15984/5984/' /etc/kazoo/config.ini 
 sed -i '/port/s/15986/5986/' /etc/kazoo/config.ini 

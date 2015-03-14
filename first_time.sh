@@ -11,14 +11,14 @@ sed -i '/port/s/15986/5986/' /etc/kazoo/config.ini
 sed -i '/children/s/25/10/' /etc/kazoo/kamailio/default.cfg 
 
 confirm 'Would you like to configure Kazoo now? [y|n]'
-[[ $answer =~ ^[y|Y] ]] || exec /bin/bash
+[[ $answer =~ ^[y|Y] ]] || exit 0
 echo "generrate erlang cookie" && generate_erlang_cookie 
 rm -rf /opt/kazoo/.erlang.cookie && ln -s /etc/kazoo/erlang.cookie /opt/kazoo/.erlang.cookie 
 UUID=`cat /etc/kazoo/erlang.cookie` 
 sed -i '/cookie/s/= .*/= '"${UUID}"'/' /etc/kazoo/config.ini 
 
 confirm "Would you like to start services? [y|n]" 
-[[ $answer =~ ^[y|Y] ]] || /bin/bash
+[[ $answer =~ ^[y|Y] ]] || exit 0
 service bigcouch restart 
 service rabbitmq-server restart 
 sleep 5 && service kz-whistle_apps restart 
@@ -27,4 +27,3 @@ service kz-ecallmgr restart
 #sup -t 3600 whapps_maintenance migrate 
 #sup -n ecallmgr ecallmgr_maintenance add_fs_node freeswitch@${HOSTNAME} 
 
-exec /bin/bash 

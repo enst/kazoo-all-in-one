@@ -12,4 +12,3 @@ ADD first_time.sh /opt/kazoo_install/
 
 WORKDIR /opt/kazoo_install
 
-CMD ./first_time.sh 

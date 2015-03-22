@@ -8,3 +8,5 @@ service kz-ecallmgr restart
 service freeswitch restart
 service kamailio restart
 service httpd restart
+
+exec /bin/bash

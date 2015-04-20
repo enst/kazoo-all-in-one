@@ -1,5 +1,6 @@
 #!/bin/bash
 
+service crond restart
 service bigcouch restart 
 service rabbitmq-server restart 
 sleep 5

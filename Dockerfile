@@ -6,7 +6,7 @@ RUN yum install -y kazoo-bigcouch-R15B kazoo-R15B kazoo-kamailio kazoo-freeswitc
                     kazoo-prompts kazoo-librabbitmq kazoo-ui \
                     monster-ui-accounts monster-ui-core monster-ui-numbers \
                     monster-ui-pbxs monster-ui-voip monster-ui-webhooks \
-                    rsyslog httpd
+                    rsyslog httpd vixie-cron
 
 ADD first_time.sh start.sh /opt/kazoo_install/
 

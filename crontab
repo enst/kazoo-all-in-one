@@ -1,0 +1,1 @@
+* * * * * root netstat  -pln | grep 5672 || /sbin/service rabbitmq-server restart

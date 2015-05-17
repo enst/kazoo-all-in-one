@@ -11,7 +11,7 @@ RUN yum install -y kazoo-bigcouch-R15B kazoo-R15B kazoo-kamailio kazoo-freeswitc
 ADD first_time.sh start.sh /opt/kazoo_install/
 
 WORKDIR /etc
-RUN tar zcvf kazoo.tar.gz kazoo
+RUN cp -r kazoo kazoo.orig
 
 ADD crontab /etc/cron.d/
 RUN chmod +x /etc/cron.d/crontab
